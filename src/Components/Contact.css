@@ -1,0 +1,45 @@
+.contact {
+  padding: 4rem 0;
+}
+
+.contact > * {
+  width: 80%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  background: rgba(13, 132, 118, 0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 12px;
+}
+
+.contact h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.contact-links a {
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+
+  background: var(--button-bg);
+  color: var(--text-main);
+
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+/* 🔥 HOVER CONSISTENTE */
+.contact-links a:hover {
+  background: var(--button-hover);
+  color: var(--bg-main); /* 🔥 contraste fuerte */
+  transform: translateY(-2px);
+}

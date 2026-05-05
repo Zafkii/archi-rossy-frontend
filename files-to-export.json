@@ -1,0 +1,24 @@
+{
+  "files": [
+    "src/components/Footer.tsx",
+    "src/components/Header.tsx",
+    "src/components/GenericProjectCard.tsx",
+    "src/components/GenericProyectModal.tsx",
+    "src/components/Home.tsx",
+    "src/components/ModernHouseModal.tsx",
+    "src/components/Sidebar.tsx",
+    "src/components/About.tsx",
+    "src/components/Contact.tsx",
+
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/vite-env.d.ts",
+
+    "index.html",
+
+    ".env",
+    "tsconfig.json",
+    "package.json",
+    "vite.config.ts"
+  ]
+}

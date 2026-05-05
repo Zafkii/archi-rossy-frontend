@@ -24,8 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+
   min-width: 320px;
   min-height: 100vh;
   background-image: url("./assets/bg.svg");
@@ -69,5 +68,53 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+    :root {
+      font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      font-weight: 400;
+
+      color: var(--text-main);
+      background-color: var(--bg-main);
+
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+
+      background-color: var(--bg-main);
+      color: var(--text-main);
+
+      display: flex;
+      justify-content: center;
+
+      user-select: none;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    button {
+      border-radius: 8px;
+      border: none;
+      padding: 0.6em 1.2em;
+
+      font-size: 1em;
+      font-weight: 500;
+
+      background: var(--button-bg);
+      color: var(--text-main);
+
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+    }
   }
 }

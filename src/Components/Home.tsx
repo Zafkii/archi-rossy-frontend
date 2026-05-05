@@ -1,50 +1,58 @@
-import { projects } from "../data/projects"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GenericProjectCard from "./GenericProjectCard"
 import GenericProjectModal from "./GenericProyectModal"
-import "./Home.css"
+
+type Block = { type: "image"; url: string } | { type: "text"; content: string }
+
+interface Project {
+  id: string
+  title: string
+  description: string
+  cover_image: string
+  blocks: Block[]
+}
+
+const API_URL = import.meta.env.VITE_API_URL
 
 const Home = () => {
+  const [projects, setProjects] = useState<Project[]>([])
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
-    null
+    null,
   )
-  const handleCardClick = (id: string) => {
-    setSelectedProjectId(id)
-  }
-  const closeModal = () => {
-    setSelectedProjectId(null)
-  }
+
+  useEffect(() => {
+    fetch(`${API_URL}/projects`)
+      .then((res) => res.json())
+      .then((data: Project[]) => setProjects(data))
+  }, [])
+
   const selectedProject = projects.find((p) => p.id === selectedProjectId)
 
   if (!selectedProject) {
     return (
-      <main className="main">
-        {projects.map((proj, idx) => (
-          <GenericProjectCard key={idx} {...proj} onClick={handleCardClick} />
+      <div id="top" className="main">
+        {" "}
+        {/* 🔥 CAMBIO CLAVE */}
+        {projects.map((proj) => (
+          <GenericProjectCard
+            key={proj.id}
+            id={proj.id}
+            title={proj.title}
+            description={proj.description}
+            imageUrl={proj.cover_image}
+            onClick={setSelectedProjectId}
+          />
         ))}
-      </main>
-    )
-  } else {
-    return (
-      <main className="main">
-        {selectedProject.modal ? (
-          <selectedProject.modal onClose={closeModal} />
-        ) : (
-          <GenericProjectModal project={selectedProject} onClose={closeModal} />
-        )}
-      </main>
+      </div>
     )
   }
-  /* return (
-    <main className="main">
-      {projects.map((proj, idx) => (
-        <GenericProjectCard key={idx} {...proj} onClick={handleCardClick} />
-      ))}
-      {selectedProject && (
-        <GenericProjectModal project={selectedProject} onClose={closeModal} />
-      )}
-    </main>
-  ) */
+
+  return (
+    <GenericProjectModal
+      project={selectedProject}
+      onClose={() => setSelectedProjectId(null)}
+    />
+  )
 }
 
 export default Home

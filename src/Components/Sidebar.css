@@ -1,0 +1,57 @@
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+
+  background: var(--button-bg);
+  color: var(--text-main);
+
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+
+  width: 250px;
+  height: 100%;
+
+  background: var(--bg-panel);
+  color: var(--text-main);
+
+  padding: 70px 20px 20px 20px; /* 🔥 espacio arriba */
+  transition: left 0.3s ease;
+
+  z-index: 1000;
+}
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar li:hover {
+  color: var(--color-secondary);
+}
+
+/* 🔥desliz PARA MÓVILES */
+
+.sidebar {
+  overflow-y: auto; /* 🔥 scroll vertical */
+  -webkit-overflow-scrolling: touch; /* 🔥 smooth en móvil */
+}

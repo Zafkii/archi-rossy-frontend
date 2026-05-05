@@ -1,0 +1,26 @@
+.about {
+  padding: 4rem 0; /* quitamos padding lateral */
+}
+
+/* 🔥 CONTENEDOR REAL */
+.about > * {
+  width: 80%; /* 🔥 deja 10% a cada lado */
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  background: rgba(13, 132, 118, 0.25); /* 🔥 opacidad */
+  backdrop-filter: blur(10px); /* 🔥 glass effect */
+
+  border-radius: 12px;
+  text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about p {
+  color: var(--text-muted);
+}

@@ -1,4 +1,3 @@
-// src/components/Header.tsx
 import { useEffect, useState } from "react"
 import "./Header.css"
 
@@ -6,24 +5,24 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
-    const footer = document.getElementById("footer")
+    const contact = document.getElementById("contact")
+
+    if (!contact) return
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsVisible(!entry.isIntersecting) // Oculta si el footer entra en pantalla
+          setIsVisible(!entry.isIntersecting)
         })
       },
       {
-        root: null,
-        threshold: 0.1,
-      }
+        threshold: 0.3, // 👈 no desaparece hasta que contacto entra bien
+      },
     )
 
-    if (footer) observer.observe(footer)
+    observer.observe(contact)
 
-    return () => {
-      if (footer) observer.unobserve(footer)
-    }
+    return () => observer.disconnect()
   }, [])
 
   return (

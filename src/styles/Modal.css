@@ -1,0 +1,10 @@
+.modal-overlay {
+  position: fixed;
+  background: var(--bg-overlay);
+}
+
+.modal-content {
+  background: var(--bg-panel);
+  color: var(--text-main);
+  box-shadow: var(--shadow-soft);
+}

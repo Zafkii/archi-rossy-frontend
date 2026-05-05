@@ -1,0 +1,37 @@
+:root {
+  /* 🎯 COLORES PRINCIPALES */
+  --color-primary: #0d8476;
+  --color-secondary: #0eff36;
+
+  /* 🧱 BACKGROUNDS */
+  --bg-main: #0a0a0a;
+  --bg-card: #1b1b1b;
+  --bg-panel: #141414;
+  --bg-overlay: rgba(20, 20, 20, 0.95);
+  --bg-section: #0b3d37; /* 🔥 versión oscura del primary */
+
+  /* 📝 TEXTOS */
+  --text-main: #ffffff;
+  --text-muted: #b3b3b3;
+
+  /* 🧊 BORDES */
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  /* 🌫 SOMBRAS */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+  /* 🎛 BOTONES */
+  --button-bg: var(--color-primary);
+  --button-hover: var(--color-secondary);
+
+  /* ⚠️ ESTADOS */
+  --color-danger: #d32f2f;
+  --color-success: #2e7d32;
+
+  /* 🌈 GRADIENTE */
+  --accent-gradient: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+}

@@ -1,0 +1,17 @@
+{
+  "files": [
+    "src/components/About.css",
+    "src/components/Contact.css",
+    "src/components/Sidebar.css",
+    "src/components/Footer.css",
+    "src/components/Header.css",
+    "src/components/GenericProjectCard.css",
+    "src/components/GenericProyectModal.css",
+    "src/components/Home.css",
+
+    "src/styles/Modal.css",
+    "src/styles/theme.css",
+    "src/App.css",
+    "src/index.css"
+  ]
+}
