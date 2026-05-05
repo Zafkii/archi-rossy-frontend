@@ -2,9 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 80%;
-  height: 80%;
-  background: var(--bg-overlay);
+  width: 100vw; /* 🔥 clave */
+  height: 100vh; /* 🔥 clave */
+  background: rgba(0, 0, 0, 0);
 
   display: flex;
   justify-content: center;
@@ -70,4 +70,12 @@
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
   color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 75%;
+    max-height: 80vh;
+    margin-top: 60px; /* si quieres bajarlo */
+  }
 }

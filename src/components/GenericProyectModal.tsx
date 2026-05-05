@@ -1,5 +1,5 @@
 import "./GenericProyectModal.css"
-import React from "react"
+import React, { useEffect } from "react"
 
 // 🔥 Tipos
 type Block =
@@ -35,7 +35,6 @@ const parseText = (text: string) => {
     const [full, type, content] = match
     const index = match.index
 
-    // texto normal antes
     if (index > lastIndex) {
       elements.push(text.slice(lastIndex, index))
     }
@@ -55,7 +54,6 @@ const parseText = (text: string) => {
     lastIndex = index + full.length
   }
 
-  // resto del texto
   if (lastIndex < text.length) {
     elements.push(text.slice(lastIndex))
   }
@@ -64,9 +62,28 @@ const parseText = (text: string) => {
 }
 
 const ProjectModal = ({ project, onClose }: Props) => {
+  // 🔥 BOTÓN ATRÁS (historial)
+  useEffect(() => {
+    // empuja un estado al abrir el modal
+    window.history.pushState({ modal: true }, "")
+
+    const handlePopState = () => {
+      onClose()
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [onClose])
+
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()} // 🔥 evita cierre interno
+      >
         <button className="close-btn" onClick={onClose}>
           X
         </button>
