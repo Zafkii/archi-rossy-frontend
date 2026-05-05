@@ -24,3 +24,9 @@
 .about p {
   color: var(--text-muted);
 }
+
+@media (max-width: 768px) {
+  .about {
+    margin-left: 40px;
+  }
+}

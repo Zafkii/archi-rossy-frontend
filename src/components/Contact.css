@@ -43,3 +43,9 @@
   color: var(--bg-main); /* 🔥 contraste fuerte */
   transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .contact {
+    margin-left: 40px;
+  }
+}

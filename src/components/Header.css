@@ -39,3 +39,9 @@
   transform: translateY(-100%);
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  .main-header h1 {
+    padding-left: 60px;
+  }
+}

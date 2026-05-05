@@ -23,19 +23,15 @@ const Sidebar = () => {
       <nav className={`sidebar ${open ? "open" : ""}`}>
         <ul>
           <li onClick={closeSidebar}>
-            <a href="#top">Inicio</a>
+            <a href="#top">🏠 Inicio</a>
           </li>
 
           <li onClick={closeSidebar}>
-            <a href="#about">Sobre mí</a>
+            <a href="#about">👤 Sobre mí</a>
           </li>
 
           <li onClick={closeSidebar}>
-            <a href="#contact">Contacto</a>
-          </li>
-
-          <li onClick={closeSidebar}>
-            <a href="#footer">Footer</a>
+            <a href="#contact">📱 Contacto</a>
           </li>
         </ul>
       </nav>
