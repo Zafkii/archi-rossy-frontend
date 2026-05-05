@@ -4,9 +4,21 @@
 
 ```css
 .about {
-  padding: 3rem 2rem;
-  background: var(--bg-panel);
-  color: var(--text-main);
+  padding: 4rem 0; /* quitamos padding lateral */
+}
+
+/* 🔥 CONTENEDOR REAL */
+.about > * {
+  width: 80%; /* 🔥 deja 10% a cada lado */
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  background: rgba(13, 132, 118, 0.25); /* 🔥 opacidad */
+  backdrop-filter: blur(10px); /* 🔥 glass effect */
+
+  border-radius: 12px;
   text-align: center;
 }
 
@@ -16,8 +28,12 @@
 
 .about p {
   color: var(--text-muted);
-  max-width: 600px;
-  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .about {
+    margin-left: 40px;
+  }
 }
 
 ```
@@ -26,13 +42,25 @@
 
 ```css
 .contact {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: var(--bg-main);
+  padding: 4rem 0;
+}
+
+.contact > * {
+  width: 80%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  background: rgba(13, 132, 118, 0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 12px;
 }
 
 .contact h2 {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .contact-links {
@@ -41,7 +69,6 @@
   gap: 1.5rem;
   flex-wrap: wrap;
 }
-
 .contact-links a {
   text-decoration: none;
   padding: 0.8rem 1.5rem;
@@ -53,9 +80,17 @@
   transition: all 0.25s ease;
 }
 
+/* 🔥 HOVER CONSISTENTE */
 .contact-links a:hover {
   background: var(--button-hover);
+  color: var(--bg-main); /* 🔥 contraste fuerte */
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .contact {
+    margin-left: 40px;
+  }
 }
 
 ```
@@ -63,6 +98,7 @@
 ## src/components/Sidebar.css
 
 ```css
+/* 🔥 Botón hamburguesa */
 .hamburger {
   position: fixed;
   top: 15px;
@@ -79,10 +115,13 @@
   cursor: pointer;
 }
 
+/* =========================
+   🔥 SIDEBAR BASE (desktop)
+   ========================= */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
+  left: -250px; /* 🔥 visible en desktop */
 
   width: 250px;
   height: 100%;
@@ -90,23 +129,29 @@
   background: var(--bg-panel);
   color: var(--text-main);
 
-  padding: 20px;
-  transition: left 0.3s ease;
+  padding: 70px 20px 20px 20px;
 
   z-index: 1000;
+
+  /* 🔥 scroll */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebar.open {
   left: 0;
 }
-
+/* =========================
+   🔥 LISTA
+   ========================= */
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  padding: 10px 0;
+  padding: 12px 0;
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
 }
@@ -115,18 +160,56 @@
   color: var(--color-secondary);
 }
 
+/* 🔥 Links dentro */
+.sidebar a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* =========================
+   🔥 MODO MÓVIL
+   ========================= */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px; /* 🔥 oculto */
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0; /* 🔥 aparece */
+  }
+}
+
 ```
 
 ## src/components/Footer.css
 
 ```css
 .footer {
-  background-color: var(--bg-panel);
+  padding: 3rem 0;
+}
+
+/* 🔥 contenedor interno */
+.footer p {
+  width: 80%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 1.5rem;
+
+  background: rgba(13, 132, 118, 0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 12px;
+
   color: var(--text-muted);
-  padding: 1rem;
   text-align: center;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .footer {
+    margin-left: 40px;
+  }
 }
 
 ```
@@ -176,13 +259,19 @@
   pointer-events: none;
 }
 
+@media (max-width: 430px) {
+  .main-header h1 {
+    padding-left: 60px;
+  }
+}
+
 ```
 
 ## src/components/GenericProjectCard.css
 
 ```css
 .card {
-  max-width: 350px;
+  max-width: 250px;
   margin: 0 auto;
 
   border-radius: 0.6rem;
@@ -221,8 +310,10 @@
   color: var(--text-muted);
 }
 
-.card:first-child {
-  margin-top: 120px; /* 🔥 ajusta según tu header */
+@media (max-width: 768px) {
+  .card {
+    margin-left: 60px;
+  }
 }
 
 ```
@@ -234,9 +325,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-overlay);
+  width: 100vw; /* 🔥 clave */
+  height: 100vh; /* 🔥 clave */
+  background: rgba(0, 0, 0, 0);
 
   display: flex;
   justify-content: center;
@@ -287,27 +378,60 @@
   background: #b71c1c;
 }
 
+.modal-content a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.modal-content a:hover {
+  opacity: 0.8;
+}
+
+.modal-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 75%;
+    max-height: 80vh;
+    margin-top: 60px; /* si quieres bajarlo */
+  }
+}
+
 ```
 
 ## src/components/Home.css
 
 ```css
 .main {
-  margin-top: 120px; /* 🔥 espacio fijo arriba */
-
   display: grid;
   gap: 1.5rem;
 
   grid-template-columns: repeat(3, 1fr);
 
   max-width: 1200px;
-  margin-left: auto;
+
+  /* 🔥 CLAVE: espacio para sidebar */
+  margin-top: 110px; /* altura header */
+  margin-left: 250px;
   margin-right: auto;
+  padding: 0 1rem;
+
+  box-sizing: border-box;
 }
+
 /* tablet */
 @media (max-width: 768px) {
   .main {
     grid-template-columns: repeat(2, 1fr);
+
+    /* 🔥 quitar espacio sidebar */
+    margin-left: 0;
   }
 }
 
@@ -315,6 +439,27 @@
 @media (max-width: 480px) {
   .main {
     grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+}
+
+.about,
+.contact,
+.footer {
+  margin-top: 1rem;
+
+  /* 🔥 evitar que queden pegados */
+  margin-left: 250px;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+/* 🔥 también quitar en móvil */
+@media (max-width: 768px) {
+  .about,
+  .contact,
+  .footer {
+    margin-left: 0;
   }
 }
 
@@ -349,6 +494,7 @@
   --bg-card: #1b1b1b;
   --bg-panel: #141414;
   --bg-overlay: rgba(20, 20, 20, 0.95);
+  --bg-section: #0b3d37; /* 🔥 versión oscura del primary */
 
   /* 📝 TEXTOS */
   --text-main: #ffffff;
@@ -385,10 +531,6 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-}
-
-.content {
-  padding-top: 5rem;
 }
 
 ```
@@ -485,9 +627,6 @@ button:focus-visible {
 
       background-color: var(--bg-main);
       color: var(--text-main);
-
-      display: flex;
-      justify-content: center;
 
       user-select: none;
     }

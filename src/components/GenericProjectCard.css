@@ -38,10 +38,6 @@
   color: var(--text-muted);
 }
 
-.card:first-child {
-  margin-top: 120px; /* 🔥 ajusta según tu header */
-}
-
 @media (max-width: 768px) {
   .card {
     margin-left: 60px;
