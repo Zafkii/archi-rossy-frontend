@@ -22,17 +22,20 @@ const Home = () => {
 
   useEffect(() => {
     fetch(`${API_URL}/projects`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Error en API")
+        return res.json()
+      })
       .then((data: Project[]) => setProjects(data))
+      .catch((err) => console.error("❌ Error cargando proyectos:", err))
   }, [])
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId)
 
+  // 🔥 Vista normal (grid)
   if (!selectedProject) {
     return (
       <div id="top" className="main">
-        {" "}
-        {/* 🔥 CAMBIO CLAVE */}
         {projects.map((proj) => (
           <GenericProjectCard
             key={proj.id}
@@ -47,6 +50,7 @@ const Home = () => {
     )
   }
 
+  // 🔥 Modal
   return (
     <GenericProjectModal
       project={selectedProject}

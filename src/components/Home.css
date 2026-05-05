@@ -1,5 +1,5 @@
 .main {
-  margin-top: 120px; /* 🔥 espacio fijo arriba */
+  margin-top: 120px;
 
   display: grid;
   gap: 1.5rem;
@@ -7,13 +7,22 @@
   grid-template-columns: repeat(3, 1fr);
 
   max-width: 1200px;
-  margin-left: auto;
+
+  /* 🔥 CLAVE: espacio para sidebar */
+  margin-left: 250px;
   margin-right: auto;
+  padding: 0 1rem;
+
+  box-sizing: border-box;
 }
+
 /* tablet */
 @media (max-width: 768px) {
   .main {
     grid-template-columns: repeat(2, 1fr);
+
+    /* 🔥 quitar espacio sidebar */
+    margin-left: 0;
   }
 }
 
@@ -21,6 +30,7 @@
 @media (max-width: 480px) {
   .main {
     grid-template-columns: 1fr;
+    margin-left: 0;
   }
 }
 
@@ -28,4 +38,18 @@
 .contact,
 .footer {
   margin-top: 1rem;
+
+  /* 🔥 evitar que queden pegados */
+  margin-left: 250px;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+/* 🔥 también quitar en móvil */
+@media (max-width: 768px) {
+  .about,
+  .contact,
+  .footer {
+    margin-left: 0;
+  }
 }

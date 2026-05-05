@@ -1,3 +1,4 @@
+/* 🔥 Botón hamburguesa */
 .hamburger {
   position: fixed;
   top: 15px;
@@ -14,10 +15,13 @@
   cursor: pointer;
 }
 
+/* =========================
+   🔥 SIDEBAR BASE (desktop)
+   ========================= */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
+  left: 0; /* 🔥 visible en desktop */
 
   width: 250px;
   height: 100%;
@@ -25,22 +29,26 @@
   background: var(--bg-panel);
   color: var(--text-main);
 
-  padding: 70px 20px 20px 20px; /* 🔥 espacio arriba */
-  transition: left 0.3s ease;
+  padding: 70px 20px 20px 20px;
 
   z-index: 1000;
-}
-.sidebar.open {
-  left: 0;
+
+  /* 🔥 scroll */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
+/* =========================
+   🔥 LISTA
+   ========================= */
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  padding: 10px 0;
+  padding: 12px 0;
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
 }
@@ -49,9 +57,23 @@
   color: var(--color-secondary);
 }
 
-/* 🔥desliz PARA MÓVILES */
+/* 🔥 Links dentro */
+.sidebar a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
-.sidebar {
-  overflow-y: auto; /* 🔥 scroll vertical */
-  -webkit-overflow-scrolling: touch; /* 🔥 smooth en móvil */
+/* =========================
+   🔥 MODO MÓVIL
+   ========================= */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px; /* 🔥 oculto */
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0; /* 🔥 aparece */
+  }
 }

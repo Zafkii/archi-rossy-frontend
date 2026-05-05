@@ -4,33 +4,41 @@ import "./Sidebar.css"
 const Sidebar = () => {
   const [open, setOpen] = useState(false)
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" })
-      setOpen(false)
-    }
+  const toggleSidebar = () => {
+    setOpen(!open)
+  }
+
+  const closeSidebar = () => {
+    setOpen(false)
   }
 
   return (
     <>
-      {/* 🍔 botón */}
-      <button className="hamburger" onClick={() => setOpen(!open)}>
+      {/* 🔥 Botón hamburguesa */}
+      <button className="hamburger" onClick={toggleSidebar}>
         ☰
       </button>
 
-      {/* 🧱 sidebar */}
-      <div className={`sidebar ${open ? "open" : ""}`}>
-        <h3>Menú</h3>
-
+      {/* 🔥 Sidebar */}
+      <nav className={`sidebar ${open ? "open" : ""}`}>
         <ul>
-          <li onClick={() => scrollTo("top")}>🏠 Mis Proyectos</li>
+          <li onClick={closeSidebar}>
+            <a href="#top">Inicio</a>
+          </li>
 
-          <li onClick={() => scrollTo("about")}>👤 Sobre mí</li>
+          <li onClick={closeSidebar}>
+            <a href="#about">Sobre mí</a>
+          </li>
 
-          <li onClick={() => scrollTo("contact")}>📬 Contacto</li>
+          <li onClick={closeSidebar}>
+            <a href="#contact">Contacto</a>
+          </li>
+
+          <li onClick={closeSidebar}>
+            <a href="#footer">Footer</a>
+          </li>
         </ul>
-      </div>
+      </nav>
     </>
   )
 }
