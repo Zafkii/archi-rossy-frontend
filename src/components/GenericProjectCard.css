@@ -35,3 +35,9 @@
 .content p {
   color: var(--text-muted);
 }
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+  }
+}

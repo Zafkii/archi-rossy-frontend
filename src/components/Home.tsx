@@ -36,7 +36,7 @@ const Home = () => {
   // 🔥 Vista normal (grid)
   if (!selectedProject) {
     return (
-      <div id="top" className="main">
+      <div id="projects" className="main">
         {projects.map((proj) => (
           <GenericProjectCard
             key={proj.id}

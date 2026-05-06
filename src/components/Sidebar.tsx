@@ -27,6 +27,10 @@ const Sidebar = () => {
           </li>
 
           <li onClick={closeSidebar}>
+            <a href="#projects">📂 Proyectos</a>
+          </li>
+
+          <li onClick={closeSidebar}>
             <a href="#about">👤 Sobre mí</a>
           </li>
 
