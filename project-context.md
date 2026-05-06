@@ -8,7 +8,7 @@ import "./Footer.css"
 const Footer = () => {
   return (
     <footer id="footer" className="footer">
-      <p>&copy; {new Date().getFullYear()} Estudio de Arquitectura</p>
+      <p>&copy; {new Date().getFullYear()} Architecture Rossy</p>
     </footer>
   )
 }
@@ -228,6 +228,7 @@ export default ProjectModal
 import { useEffect, useState } from "react"
 import GenericProjectCard from "./GenericProjectCard"
 import GenericProjectModal from "./GenericProyectModal"
+import "./Home.css"
 
 type Block = { type: "image"; url: string } | { type: "text"; content: string }
 
@@ -262,7 +263,7 @@ const Home = () => {
   // 🔥 Vista normal (grid)
   if (!selectedProject) {
     return (
-      <div id="top" className="main">
+      <div id="projects" className="main">
         {projects.map((proj) => (
           <GenericProjectCard
             key={proj.id}
@@ -343,6 +344,10 @@ const Sidebar = () => {
         <ul>
           <li onClick={closeSidebar}>
             <a href="#top">🏠 Inicio</a>
+          </li>
+
+          <li onClick={closeSidebar}>
+            <a href="#projects">📂 Proyectos</a>
           </li>
 
           <li onClick={closeSidebar}>
@@ -462,7 +467,7 @@ export default Contact
 ## src/App.tsx
 
 ```
-import Sidebar from "./components/Sidebar"
+// import Sidebar from "./components/Sidebar"
 import Header from "./components/Header"
 import Home from "./components/Home"
 import About from "./components/About"
@@ -472,7 +477,7 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Header />
 
       <main>
