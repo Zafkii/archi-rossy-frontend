@@ -6,7 +6,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   max-width: 1200px;
-  margin: 110px auto 0 auto; /* 🔥 centrado real */
+  margin: 0 auto 0 auto; /* 🔥 centrado real */
   padding: 0 1rem;
 
   box-sizing: border-box;
@@ -16,8 +16,8 @@
 .about,
 .contact,
 .footer {
-  margin: 2rem auto 0 auto;
+  margin: 0 auto 0 auto;
   max-width: 1200px;
-  padding: 0 1rem;
+  padding: 0 0;
   box-sizing: border-box;
 }
