@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import GenericProjectCard from "./GenericProjectCard"
 import GenericProjectModal from "./GenericProyectModal"
+import "./Home.css"
 
 type Block = { type: "image"; url: string } | { type: "text"; content: string }
 

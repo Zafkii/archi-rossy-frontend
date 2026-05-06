@@ -1,7 +1,5 @@
 .card {
-  max-width: 250px;
-  margin: 0 auto;
-
+  width: 100%; /* 🔥 ocupa la columna del grid */
   border-radius: 0.6rem;
   overflow: hidden;
   background-color: var(--bg-card);
@@ -13,7 +11,7 @@
 }
 
 .card:hover {
-  transform: scale(1.04);
+  transform: translateY(-5px) scale(1.02); /* 🔥 más elegante */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -36,10 +34,4 @@
 
 .content p {
   color: var(--text-muted);
-}
-
-@media (max-width: 768px) {
-  .card {
-    margin-left: 60px;
-  }
 }

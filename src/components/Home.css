@@ -2,53 +2,22 @@
   display: grid;
   gap: 1.5rem;
 
-  grid-template-columns: repeat(3, 1fr);
+  /* 🔥 responsive automático (MEJOR que media queries manuales) */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   max-width: 1200px;
-
-  /* 🔥 CLAVE: espacio para sidebar */
-  margin-top: 110px; /* altura header */
-  margin-left: 250px;
-  margin-right: auto;
+  margin: 110px auto 0 auto; /* 🔥 centrado real */
   padding: 0 1rem;
 
   box-sizing: border-box;
 }
 
-/* tablet */
-@media (max-width: 768px) {
-  .main {
-    grid-template-columns: repeat(2, 1fr);
-
-    /* 🔥 quitar espacio sidebar */
-    margin-left: 0;
-  }
-}
-
-/* móvil */
-@media (max-width: 480px) {
-  .main {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-  }
-}
-
+/* secciones inferiores */
 .about,
 .contact,
 .footer {
-  margin-top: 1rem;
-
-  /* 🔥 evitar que queden pegados */
-  margin-left: 250px;
-  margin-right: auto;
+  margin: 2rem auto 0 auto;
+  max-width: 1200px;
   padding: 0 1rem;
-}
-
-/* 🔥 también quitar en móvil */
-@media (max-width: 768px) {
-  .about,
-  .contact,
-  .footer {
-    margin-left: 0;
-  }
+  box-sizing: border-box;
 }

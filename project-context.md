@@ -101,7 +101,7 @@ export default GenericProjectCard
 
 ```
 import "./GenericProyectModal.css"
-import React from "react"
+import React, { useEffect } from "react"
 
 // 🔥 Tipos
 type Block =
@@ -137,7 +137,6 @@ const parseText = (text: string) => {
     const [full, type, content] = match
     const index = match.index
 
-    // texto normal antes
     if (index > lastIndex) {
       elements.push(text.slice(lastIndex, index))
     }
@@ -157,7 +156,6 @@ const parseText = (text: string) => {
     lastIndex = index + full.length
   }
 
-  // resto del texto
   if (lastIndex < text.length) {
     elements.push(text.slice(lastIndex))
   }
@@ -166,9 +164,28 @@ const parseText = (text: string) => {
 }
 
 const ProjectModal = ({ project, onClose }: Props) => {
+  // 🔥 BOTÓN ATRÁS (historial)
+  useEffect(() => {
+    // empuja un estado al abrir el modal
+    window.history.pushState({ modal: true }, "")
+
+    const handlePopState = () => {
+      onClose()
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [onClose])
+
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()} // 🔥 evita cierre interno
+      >
         <button className="close-btn" onClick={onClose}>
           X
         </button>
@@ -232,17 +249,20 @@ const Home = () => {
 
   useEffect(() => {
     fetch(`${API_URL}/projects`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Error en API")
+        return res.json()
+      })
       .then((data: Project[]) => setProjects(data))
+      .catch((err) => console.error("❌ Error cargando proyectos:", err))
   }, [])
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId)
 
+  // 🔥 Vista normal (grid)
   if (!selectedProject) {
     return (
       <div id="top" className="main">
-        {" "}
-        {/* 🔥 CAMBIO CLAVE */}
         {projects.map((proj) => (
           <GenericProjectCard
             key={proj.id}
@@ -257,6 +277,7 @@ const Home = () => {
     )
   }
 
+  // 🔥 Modal
   return (
     <GenericProjectModal
       project={selectedProject}
@@ -302,33 +323,37 @@ import "./Sidebar.css"
 const Sidebar = () => {
   const [open, setOpen] = useState(false)
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" })
-      setOpen(false)
-    }
+  const toggleSidebar = () => {
+    setOpen(!open)
+  }
+
+  const closeSidebar = () => {
+    setOpen(false)
   }
 
   return (
     <>
-      {/* 🍔 botón */}
-      <button className="hamburger" onClick={() => setOpen(!open)}>
+      {/* 🔥 Botón hamburguesa */}
+      <button className="hamburger" onClick={toggleSidebar}>
         ☰
       </button>
 
-      {/* 🧱 sidebar */}
-      <div className={`sidebar ${open ? "open" : ""}`}>
-        <h3>Menú</h3>
-
+      {/* 🔥 Sidebar */}
+      <nav className={`sidebar ${open ? "open" : ""}`}>
         <ul>
-          <li onClick={() => scrollTo("top")}>🏠 Mis Proyectos</li>
+          <li onClick={closeSidebar}>
+            <a href="#top">🏠 Inicio</a>
+          </li>
 
-          <li onClick={() => scrollTo("about")}>👤 Sobre mí</li>
+          <li onClick={closeSidebar}>
+            <a href="#about">👤 Sobre mí</a>
+          </li>
 
-          <li onClick={() => scrollTo("contact")}>📬 Contacto</li>
+          <li onClick={closeSidebar}>
+            <a href="#contact">📱 Contacto</a>
+          </li>
         </ul>
-      </div>
+      </nav>
     </>
   )
 }

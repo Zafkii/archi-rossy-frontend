@@ -564,7 +564,7 @@ a:hover {
 
 body {
   margin: 0;
-
+  padding-top: 120px;
   min-width: 320px;
   min-height: 100vh;
   background-image: url("./assets/bg.svg");
